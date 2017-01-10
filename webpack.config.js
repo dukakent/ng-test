@@ -1,14 +1,16 @@
-const common = {
-  
-}
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/public/app.js',
   output: {
-    path: './dist',
+    path: path.resolve('./dist/public'),
+    publicPath: './',
     filename: 'bundle.js'
   },
-
+  plugins: [
+    new HtmlWebpackPlugin()
+  ],
   module: {
     loaders: [
       {
