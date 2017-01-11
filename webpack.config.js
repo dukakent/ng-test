@@ -1,15 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const HtmlWebpackPluginConfig = {
+  filename: 'index.html',
+  template: './src/public/index.html'
+};
+
 module.exports = {
-  entry: './src/public/app.js',
+  entry: './src/public/index.js',
   output: {
     path: path.resolve('./dist/public'),
     publicPath: './',
     filename: 'bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin(HtmlWebpackPluginConfig)
   ],
   module: {
     loaders: [
@@ -21,10 +26,13 @@ module.exports = {
           presets: ['es2015']
         }
       },
-
       {
         test: /\.css$/,
         loader: 'css-loader'
+      },
+      {
+        test: /fonts\/[\w-]+\.(woff|woff2|ttf|eot|svg)$/,
+        loader: 'file-loader?name=fonts/[hash].[ext]'
       }
     ]
   }
