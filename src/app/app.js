@@ -1,6 +1,6 @@
 import angular from 'angular';
-import videoStream from './videoStream/videoStream.component';
+import videoPlayer from './videoPlayer/videoPlayer.component';
 
 angular
     .module('ng-test', [])
-    .component('videoStream', videoStream);
+    .component('videoPlayer', videoPlayer);
